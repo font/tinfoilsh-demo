@@ -1,0 +1,32 @@
+# tinfoil-config.yml
+
+# Versions for the Confidential VM and firmware
+cvm-version: 0.0.27
+ovmf-version: 0.0.2
+
+# VM resources (adjusted for a 1B model)
+cpus: 2
+memory: 8192 # 8 GB
+
+# Model configuration
+models:
+  - name: "meta-llama-3.2-1b"
+    repo: "meta-llama/Llama-3.2-1B-instruct"
+    # IMPORTANT: Replace the placeholder below with the actual info string 
+    # you generated in the previous step.
+    mpk: "c3eb0854d92ca58c5a746c25f2a3ee6acfc37e1ee40719e033e6ecac3aab1bb2_4954705920_98cde41c-1780-52ee-9aa9-cf6aa1d5c96a"
+
+# No quantization needed for the official model
+vllm-args: --max-model-len 8192
+
+# Shim configuration for TLS and security policy
+shim:
+  domains:
+    - meta-llama-3.2-1b-p.model.tinfoil.sh
+  listen-port: 443
+  upstream-port: 8080
+  control-plane: https://api.tinfoil.sh
+  paths:
+    - /v1/chat/completions
+  origins:
+    - https://your-website.com
