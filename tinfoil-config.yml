@@ -1,7 +1,7 @@
 # tinfoil-config.yml
 
 # Versions for the Confidential VM and firmware
-cvm-version: 0.0.27
+cvm-version: 0.4.1
 ovmf-version: 0.0.2
 
 # VM resources (adjusted for a 1B model)
