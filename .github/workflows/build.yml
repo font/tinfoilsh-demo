@@ -8,6 +8,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run PRI Build Action
-        uses: tinfoilsh/pri-build-action@main  # Assuming this exists; check Tinfoil repos for exact action
+        uses: tinfoilsh/pri-build-action@0.4.0  # Assuming this exists; check Tinfoil repos for exact action
         with:
-          config-file: tinfoil-config.yml
+          config-file: ${{ github.workspace }}/tinfoil-config.yml
