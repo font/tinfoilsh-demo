@@ -1,0 +1,13 @@
+name: PRI Build
+on:
+  release:
+    types: [created]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run PRI Build Action
+        uses: tinfoilsh/pri-build-action@main  # Assuming this exists; check Tinfoil repos for exact action
+        with:
+          config-file: tinfoil-config.yml
