@@ -1,13 +1,22 @@
-name: PRI Build
+name: Build and Attest
+
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - 'v*'
+
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+      id-token: write
+      attestations: write
+
     steps:
       - uses: actions/checkout@v4
-      - name: Run PRI Build Action
-        uses: tinfoilsh/pri-build-action@0.4.0  # Assuming this exists; check Tinfoil repos for exact action
+      - uses: tinfoilsh/pri-build-action@main
         with:
           config-file: ${{ github.workspace }}/tinfoil-config.yml
+          #github-token: ${{ secrets.GITHUB_TOKEN }}
