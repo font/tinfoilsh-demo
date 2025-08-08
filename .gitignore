@@ -1,0 +1,6 @@
+*.json
+*.initrd
+*.vmlinuz
+*.fd
+cache/
+output/
